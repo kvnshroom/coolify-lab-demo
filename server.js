@@ -1,14 +1,14 @@
 // Minimale Demo-App für das Coolify-Lab: zeigt Version/Umgebung, /health für Healthchecks.
 const http = require("http");
 
-const VERSION = "1.1.0";
+const VERSION = "1.2.0";
 const PORT = process.env.PORT || 3000;
 const APP_ENV = process.env.APP_ENV || "unbekannt";
 const started = new Date().toISOString();
 
 const server = http.createServer((req, res) => {
   if (req.url === "/health") {
-    res.writeHead(200, { "Content-Type": "application/json" });
+    res.writeHead(500, { "Content-Type": "application/json" }); // ABSICHTLICHER FEHLER (Rollback-Test)
     return res.end(JSON.stringify({ status: "ok", version: VERSION, env: APP_ENV }));
   }
   res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });

@@ -1,7 +1,7 @@
 // Minimale Demo-App für das Coolify-Lab: zeigt Version/Umgebung, /health für Healthchecks.
 const http = require("http");
 
-const VERSION = "1.0.0";
+const VERSION = "1.1.0";
 const PORT = process.env.PORT || 3000;
 const APP_ENV = process.env.APP_ENV || "unbekannt";
 const started = new Date().toISOString();
@@ -14,6 +14,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
   res.end(`<!doctype html><title>Coolify-Lab Demo</title>
 <h1>Coolify-Lab Demo</h1>
+<p>Neu in 1.1.0: diese Zeile.</p>
 <p>Version: <b>${VERSION}</b></p>
 <p>Umgebung: <b>${APP_ENV}</b></p>
 <p>Container gestartet: ${started}</p>`);
